@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Test{% endblock %}
+
+{% block body %}
+    <a href="{{ path('app_test_index') }}">back to tests list</a>
+    <br>
+    <h1>{{ test.name }}</h1>
+    <h3>{{ test.description }}</h3>
+
+    <form method="post" action="{{ path('app_test_write_process', {'id': test.id}) }}">
+        {% for question in test.getQuestionsShuffled %}
+            <div class="question">
+                <p>{{ question.text }}</p>
+                <div class="options">
+                    {% for option in question.getAnswerOptionsShuffled %}
+                        <label>
+                            <input type="checkbox" name="{{ option.id }}" value="{{ option.id }}">
+                            {{ option.text }}
+                        </label><br>
+                    {% endfor %}
+                </div>
+            </div>
+        {% endfor %}
+
+        <button type="submit">Submit</button>
+    </form>
+
+{% endblock %}
