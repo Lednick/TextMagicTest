@@ -26,10 +26,6 @@ These instructions will help you set up and run the project on your local machin
     bin/console doctrine:fixtures:load -q
 
 4. Now you are ready to reach http://localhost/test/:
-
-   ```bash
-   docker exec -it php-worker bash
-
 5. Before you commit, please run cs-fixer:
 
    ```bash
